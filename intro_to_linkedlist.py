@@ -1,4 +1,4 @@
-#Linkedlist is made up of nodes that are LINKED
+#Linked list is made up of nodes that are LINKED
 
 # A -> B -> C -> D --> Null
 # Terminology A LINKS to B, B LINKS to C
@@ -32,3 +32,73 @@
 # Time complexity is O(1) for an insertion
 
 # ------------------------------------------------------------------------------------------
+# Traversing a Linked List
+# This mean we vist every node to perform some operation on the nodes 
+# We need a few variables 
+# Current Node
+
+
+#       A ->       B       ->     C ->     D --> Null
+# current    current.next 
+
+# We can stop the algo when current is equal to NULL
+
+
+# ------------------------------------------------------------------------------------------
+# Building a linked list 
+# First we need the node class 
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+
+
+# Then we can create some instances 
+a = Node("A")
+b = Node("B")
+c = Node("C")
+d = Node("D")
+
+
+# How can we put together to a linked list 
+a.next = b
+b.next = c
+c.next = d
+# A -> B -> C -> D --> Null
+
+
+# ------------------------------------------------------------------------------------------
+# Now lets try to traverse the linked list ITERATIVELY
+def printLinkedList(head):
+    # Main idea - we need to consistently update a current pointer
+    
+    current = head # FIRST initialize our current pointer as the head
+
+    # how much do we run this algorithm, do it while current pointer isnt equal to null 
+    while current is not None:
+        print(current.value)
+        # NOW dont forget we also need to UPDATE current node 
+        current = current.next
+
+print("This is the Iterative Way")
+printLinkedList(a) # this will print out A, B, C, D
+
+
+# What if we did the while loop as "while current.next is not None"
+# Then we would actually get one less 
+# this will print out A, B, C and NOT including D 
+
+# ------------------------------------------------------------------------------------------
+# Now lets try to traverse the linked list RECURSIVELY
+def printLinkedListRec(head):
+
+    # FIRST we start with base case, we can ask ourselves, WHEN are we done with the algorithm? When head is null
+    if head is None: 
+        return 
+    
+    # Now if the head is not null, then we can just print out the value 
+    print(head.value)
+
+    # IMPORTANT - we need to make a RECURSIVE call here by calling the same function 
+    printLinkedListRec(head.next) # what do we pass as an argument? we pass the next node
