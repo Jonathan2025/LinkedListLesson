@@ -20,10 +20,6 @@
 # Memory: O(N)
 
 
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
 
 
 
@@ -64,5 +60,5 @@ def fillValuesHelper(current, values):
     
     # NOW we make this recursive by calling our function again 
     fillValuesHelper(current.next, values)
-    
+
     
