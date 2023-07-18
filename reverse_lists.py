@@ -23,17 +23,15 @@
 #     self.next = None
 
 def reverse_list(head):
-    # We need to have a previous node 
-    previous = current
-    # We first need a classic traversal 
-    current = head
-    while current is not None:
-        next = current.next
-        current.next = previous 
+    # first we need our variables to start
+    previous = None
+    current = head 
+    if current is not None:
+        next = current.next # save the next variable as a temp variable
+        current.next = previous # we need to shift the order of the nodes
         previous = current 
-        current = next
+        current = next 
 
-    return previous # return the previous because the problem asks to return the new head node 
 
 
 
@@ -62,6 +60,7 @@ def reverse_list(head):
 def reverse_list(head, previous = None): # set a default to None if the user doesnt provide a head
     if head is None: 
         return previous
+    next = head.next
     head.next = previous 
     return reverse_list(next, head)
 
